@@ -1,0 +1,14 @@
+{
+  "name": "paperless-plugin",
+  "description": "Claude Code plugin for Paperless-ngx: skills on top of the paperless-mcp server.",
+  "owner": {
+    "name": "Marcel Bruckner (Marceltov)"
+  },
+  "plugins": [
+    {
+      "name": "paperless",
+      "source": "./",
+      "description": "Skills plus the MCP connection to a running paperless-mcp server."
+    }
+  ]
+}
