@@ -7,7 +7,7 @@ hide:
 
 # Skills for your Paperless-ngx archive in Claude Code
 
-<p class="tm-hero__lead">paperless-ngx-plugin gives Claude Code ready-made skills for Paperless-ngx: clean up the inbox, find and remove duplicates, unlock password-protected PDFs, search, edit metadata and tidy correspondents, types and tags. It also sets up the connection to your Paperless-ngx MCP server for you.</p>
+<p class="tm-hero__lead">The Paperless-ngx plugin gives Claude Code ready-made skills for Paperless-ngx: clean up the inbox, find and remove duplicates, unlock password-protected PDFs, search, edit metadata and tidy correspondents, types and tags. It also sets up the connection to your Paperless-ngx MCP server for you.</p>
 
 [Install it](install.md){ .md-button .md-button--primary } [Browse the skills](skills.md){ .md-button }
 
