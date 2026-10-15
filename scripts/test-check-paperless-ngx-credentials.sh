@@ -1,10 +1,10 @@
 #!/bin/bash
-# Manual self-check for check-paperless-credentials.sh's instance-detection
-# logic. No framework: run `bash scripts/test-check-paperless-credentials.sh`.
+# Manual self-check for check-paperless-ngx-credentials.sh's instance-detection
+# logic. No framework: run `bash scripts/test-check-paperless-ngx-credentials.sh`.
 set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-hook="$script_dir/check-paperless-credentials.sh"
+hook="$script_dir/check-paperless-ngx-credentials.sh"
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
@@ -36,22 +36,22 @@ check() {
 check "nothing configured" 0 yes "selftest-1"
 
 cat > "$tmp/.claude.json" <<'JSON'
-{"mcpServers": {"paperless": {"type": "http", "url": "https://your-host/mcp"}}}
+{"mcpServers": {"paperless-ngx": {"type": "http", "url": "https://your-host/mcp"}}}
 JSON
 check "default instance configured" 0 no "selftest-2"
 
 cat > "$tmp/.claude.json" <<'JSON'
-{"mcpServers": {"paperless_work": {"type": "http", "url": "https://work.example/mcp"}}}
+{"mcpServers": {"paperless-ngx_work": {"type": "http", "url": "https://work.example/mcp"}}}
 JSON
 check "labeled instance configured (legacy underscore)" 0 no "selftest-3"
 
 cat > "$tmp/.claude.json" <<'JSON'
-{"mcpServers": {"paperless-work": {"type": "http", "url": "https://work.example/mcp"}}}
+{"mcpServers": {"paperless-ngx-work": {"type": "http", "url": "https://work.example/mcp"}}}
 JSON
 check "labeled instance configured" 0 no "selftest-3b"
 
 cat > "$tmp/.claude.json" <<'JSON'
-{"mcpServers": {"paperlessx": {"type": "http", "url": "https://other.example/mcp"}}}
+{"mcpServers": {"paperless-ngxx": {"type": "http", "url": "https://other.example/mcp"}}}
 JSON
 check "unrelated server name does not count" 0 yes "selftest-3c"
 

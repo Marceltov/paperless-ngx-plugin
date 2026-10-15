@@ -1,13 +1,13 @@
 ---
-name: paperless-search-documents
+name: paperless-ngx-search-documents
 description: Find Paperless-ngx documents by full text, title, correspondent, type, tag, date, custom field or ID while keeping results small, using documents_list and search_retrieve. Use when the user asks to find, list, count or look up documents ("where is my rental contract", "how many invoices from 2025", "show everything tagged insurance").
 ---
 
-# Search Paperless Documents
+# Search Paperless-ngx Documents
 
 Every document carries its full OCR text in `content`, often thousands of characters. A careless `documents_list` call returns pages of it and floods the context. This skill is about asking the server precise questions.
 
-If more than one Paperless instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances).
+If more than one Paperless-ngx instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances).
 
 ## Steps
 
@@ -31,4 +31,4 @@ If more than one Paperless instance is connected, resolve which one first, see [
 
 ## When nothing is found
 
-Say which filters you used. Common causes: the date filter used `added` instead of `created` (or the other way round), the document's correspondent was never set, or the OCR text is empty because the PDF is password protected (see `paperless-unlock-pdfs`).
+Say which filters you used. Common causes: the date filter used `added` instead of `created` (or the other way round), the document's correspondent was never set, or the OCR text is empty because the PDF is password protected (see `paperless-ngx-unlock-pdfs`).

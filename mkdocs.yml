@@ -1,10 +1,10 @@
-site_name: paperless-plugin
-site_description: A Claude Code plugin with skills for your Paperless-ngx documents, on top of the paperless-mcp server.
-site_url: https://paperless-plugin.marceltov.de/
-repo_url: https://github.com/Marceltov/paperless-plugin
-repo_name: Marceltov/paperless-plugin
+site_name: paperless-ngx-plugin
+site_description: A Claude Code plugin with skills for your Paperless-ngx documents, on top of the Paperless-ngx MCP server.
+site_url: https://paperless-ngx-plugin.marceltov.de/
+repo_url: https://github.com/Marceltov/paperless-ngx-plugin
+repo_name: Marceltov/paperless-ngx-plugin
 edit_uri: edit/main/docs/
-copyright: Copyright &copy; 2026 Marcel Bruckner. Licensed under <a href="https://github.com/Marceltov/paperless-plugin/blob/main/LICENSE">MIT</a>
+copyright: Copyright &copy; 2026 Marcel Bruckner. Licensed under <a href="https://github.com/Marceltov/paperless-ngx-plugin/blob/main/LICENSE">MIT</a>
 
 # Planning notes are local-only.
 exclude_docs: |

@@ -1,11 +1,11 @@
 ---
-name: paperless-edit-document-metadata
+name: paperless-ngx-edit-document-metadata
 description: Change the title, date, correspondent, document type, storage path, tags or custom fields of one or many Paperless-ngx documents with documents_partial_update and bulk_edit, avoiding the API's traps (null not clearing fields, tag lists being replaced, parent tags added automatically). Use when the user asks to rename, re-date, re-tag, recategorize or otherwise correct documents, or when another skill needs to write metadata.
 ---
 
 # Edit Document Metadata
 
-If more than one Paperless instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances).
+If more than one Paperless-ngx instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances).
 
 ## Which tool
 
@@ -32,10 +32,10 @@ If more than one Paperless instance is connected, resolve which one first, see [
 ## Choosing good values
 
 - **Title**: short and descriptive, `<sender> <kind of document> <identifier or period>`, for example `ACME Invoice 2024-0815` or `City Utilities Final Electricity Bill 2025`. Write titles in the language the user's archive already uses. Keep an existing title if it is already good.
-- **Created**: the date printed on the document. If it has none, use the date it was sent (for imported emails, the email's date; see `paperless-clean-up-inbox` for looking it up). Don't keep a date that is obviously the import day or nonsense (1970, 1994-07-04 style OCR misreads).
-- **Correspondent**: who issued the document. Reuse an existing correspondent (search with `name__icontains`, also for spelling variants) before creating one. When unsure, clear the field: an empty correspondent is better than a wrong one, because Paperless's automatic matching learns from what you assign.
-- **Document type and tags**: reuse the archive's existing ones (list them once per task). Create new ones only when nothing fits, with `matching_algorithm: 6` (automatic) so Paperless learns them.
+- **Created**: the date printed on the document. If it has none, use the date it was sent (for imported emails, the email's date; see `paperless-ngx-clean-up-inbox` for looking it up). Don't keep a date that is obviously the import day or nonsense (1970, 1994-07-04 style OCR misreads).
+- **Correspondent**: who issued the document. Reuse an existing correspondent (search with `name__icontains`, also for spelling variants) before creating one. When unsure, clear the field: an empty correspondent is better than a wrong one, because Paperless-ngx's automatic matching learns from what you assign.
+- **Document type and tags**: reuse the archive's existing ones (list them once per task). Create new ones only when nothing fits, with `matching_algorithm: 6` (automatic) so Paperless-ngx learns them.
 
 ## After editing
 
-Report what changed per document, with names instead of IDs. If you cleared or replaced an automatically assigned value, mention that Paperless's auto-matching will learn from the correction over time.
+Report what changed per document, with names instead of IDs. If you cleared or replaced an automatically assigned value, mention that Paperless-ngx's auto-matching will learn from the correction over time.

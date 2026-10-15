@@ -1,11 +1,11 @@
 ---
-name: paperless-tidy-metadata
+name: paperless-ngx-tidy-metadata
 description: Clean up Paperless-ngx correspondents, document types and tags: merge doubles (spelling variants, the same sender created twice), remove unused entries, fix tag hierarchies, and adjust matching rules. Use when the user asks to merge or deduplicate correspondents, types or tags, remove unused ones, or after a bulk cleanup created entries in parallel.
 ---
 
 # Tidy Correspondents, Types and Tags
 
-If more than one Paperless instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances).
+If more than one Paperless-ngx instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances).
 
 ## 1. Survey
 
@@ -29,4 +29,4 @@ For each entry to merge into a survivor:
 
 ## Matching rules
 
-New entries should use `matching_algorithm: 6` (automatic) so Paperless learns from assigned documents. Marker tags that only a person or a skill should set (a "reviewed" tag, a "password-protected" tag, an accounting tag) need `matching_algorithm: 0` (none), or auto-matching will start assigning them. Don't switch existing entries away from automatic matching just because they produced wrong guesses; correcting the documents is what trains them. Only set an explicit rule (`match` with any word, exact match or regex) when the user asks for one.
+New entries should use `matching_algorithm: 6` (automatic) so Paperless-ngx learns from assigned documents. Marker tags that only a person or a skill should set (a "reviewed" tag, a "password-protected" tag, an accounting tag) need `matching_algorithm: 0` (none), or auto-matching will start assigning them. Don't switch existing entries away from automatic matching just because they produced wrong guesses; correcting the documents is what trains them. Only set an explicit rule (`match` with any word, exact match or regex) when the user asks for one.

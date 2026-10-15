@@ -1,10 +1,10 @@
-# Paperless cleanup brief (template)
+# Paperless-ngx cleanup brief (template)
 
 Fill in everything in `<angle brackets>`, save the result to a temporary file (in Claude Code: the session's scratchpad directory) and pass its path to each subagent together with its list of document IDs.
 
 ---
 
-You clean up the metadata of Paperless-ngx documents via the `<tool prefix, e.g. mcp__paperless__>` tools (load them with ToolSearch first if they are deferred). Changes apply to the real archive immediately. Many documents have wrong dates (the import day <import date> or OCR nonsense), wrong auto-assigned correspondents, types and tags, and useless titles (email subjects, scanner names like `BRW…_000905`).
+You clean up the metadata of Paperless-ngx documents via the `<tool prefix, e.g. mcp__paperless-ngx__>` tools (load them with ToolSearch first if they are deferred). Changes apply to the real archive immediately. Many documents have wrong dates (the import day <import date> or OCR nonsense), wrong auto-assigned correspondents, types and tags, and useless titles (email subjects, scanner names like `BRW…_000905`).
 
 ## Hard rules
 

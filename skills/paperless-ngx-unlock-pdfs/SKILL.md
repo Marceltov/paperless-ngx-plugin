@@ -1,13 +1,13 @@
 ---
-name: paperless-unlock-pdfs
-description: Remove the password from encrypted PDFs in Paperless-ngx with documents_remove_password so Paperless can extract their text, then fix their metadata. Use when documents have empty content because they are password protected (bank statements, health insurance and government mail often are), or when the user asks to unlock, decrypt or remove passwords from documents.
+name: paperless-ngx-unlock-pdfs
+description: Remove the password from encrypted PDFs in Paperless-ngx with documents_remove_password so Paperless-ngx can extract their text, then fix their metadata. Use when documents have empty content because they are password protected (bank statements, health insurance and government mail often are), or when the user asks to unlock, decrypt or remove passwords from documents.
 ---
 
 # Unlock PDFs
 
 Encrypted PDFs are stored but not OCRed: their `content` is empty, `page_count` is null, and nothing about them is searchable.
 
-If more than one Paperless instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances).
+If more than one Paperless-ngx instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances).
 
 ## 1. Find them
 
@@ -28,7 +28,7 @@ Ask the user for the actual values. Don't store passwords anywhere.
 
 Call `documents_remove_password` with `documents=[one id]`, `password`, and `update_document: true`:
 
-- `update_document: true` stores the unlocked file as a **new version of the same document**, keeping title, tags and everything else. With the default `false`, Paperless creates a separate new document instead.
+- `update_document: true` stores the unlocked file as a **new version of the same document**, keeping title, tags and everything else. With the default `false`, Paperless-ngx creates a separate new document instead.
 - It runs in the background. Check the result with `documents_list id=<id> fields=["id","page_count","content","versions"]` a little later: content appears once OCR has run.
 
 ## 4. Then the rest, one call per document
@@ -39,4 +39,4 @@ A 400 for a single document means the password is wrong (or the PDF isn't encryp
 
 ## 5. Finish
 
-For each unlocked document: remove the password-protected tag (`bulk_edit remove_tag`), and now that the text is readable, give it a proper title, date and correspondent (see `paperless-edit-document-metadata`). Report which documents stay locked and why.
+For each unlocked document: remove the password-protected tag (`bulk_edit remove_tag`), and now that the text is readable, give it a proper title, date and correspondent (see `paperless-ngx-edit-document-metadata`). Report which documents stay locked and why.

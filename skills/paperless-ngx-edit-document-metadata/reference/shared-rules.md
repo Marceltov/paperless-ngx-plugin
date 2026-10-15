@@ -1,25 +1,25 @@
-# Shared rules for the Paperless skills
+# Shared rules for the Paperless-ngx skills
 
 <!-- Single source. Copied into every skills/*/reference/shared-rules.md by scripts/sync-shared.sh; edit this file, not the copies. -->
 
-These skills call the tools of a [paperless-mcp](https://github.com/Marceltov/paperless-mcp) server (`documents_list`, `documents_retrieve`, `documents_partial_update`, `bulk_edit`, …), not the Paperless REST API directly. The tool names come from Paperless's own OpenAPI operation IDs, so they are the same on every deployment; only the prefix in front of them differs.
+These skills call the tools of a [Paperless-ngx MCP server](https://github.com/Marceltov/paperless-ngx-mcp) (`documents_list`, `documents_retrieve`, `documents_partial_update`, `bulk_edit`, …), not the Paperless-ngx REST API directly. The tool names come from Paperless-ngx's own OpenAPI operation IDs, so they are the same on every deployment; only the prefix in front of them differs.
 
 ## Working with multiple instances
 
-A Paperless can be connected in several ways, and each connection namespaces its tools differently:
+A Paperless-ngx instance can be connected in several ways, and each connection namespaces its tools differently:
 
-- Claude Code, registered with `claude mcp add`: `mcp__paperless__documents_list` for the default instance, `mcp__paperless-work__documents_list` for one labeled `work`.
+- Claude Code, registered with `claude mcp add`: `mcp__paperless-ngx__documents_list` for the default instance, `mcp__paperless-ngx-work__documents_list` for one labeled `work`.
 - A connector on claude.ai (or in Claude Code through claude.ai): the connector's name, for example `mcp__claude_ai_Paperless-NGX__documents_list`.
 
 Resolve which instance to use like this:
 
-1. Note which Paperless tool sets are available in this conversation: any tools whose names end in the paperless-mcp set (`documents_list`, `bulk_edit`, `tags_list`, …), grouped by prefix.
+1. Note which Paperless-ngx tool sets are available in this conversation: any tools whose names end in the Paperless-ngx MCP server's tool set (`documents_list`, `bulk_edit`, `tags_list`, …), grouped by prefix.
 2. Exactly one: use it, no question asked.
 3. More than one: check whether the user already named an instance (by label, or something identifying like "the work one") and match it.
 4. Still ambiguous: ask once which instance, listing the options.
 5. Use that one instance for every tool call for the rest of the task.
 
-If no Paperless tools are available at all, say so and explain how to connect: in Claude Code with the `paperless-manage-instances` skill (from the paperless plugin), on claude.ai by adding the paperless-mcp server as a custom connector.
+If no Paperless-ngx tools are available at all, say so and explain how to connect: in Claude Code with the `paperless-ngx-manage-instances` skill (from the Paperless-ngx plugin), on claude.ai by adding the Paperless-ngx MCP server as a custom connector.
 
 ## Rules for every skill
 

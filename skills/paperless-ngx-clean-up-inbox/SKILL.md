@@ -1,20 +1,20 @@
 ---
-name: paperless-clean-up-inbox
-description: Review the Paperless-ngx inbox (or any selection of documents) one document at a time and fix what automatic import got wrong: useless titles (email subjects, scanner file names), wrong or import-day dates, wrong correspondents, document types and tags. Marks every reviewed document, removes duplicates on request, and ends with a report of follow-ups (open payment reminders, possible business receipts, documents that need a human). Use when the user asks to clean up, sort, review, tidy or process their Paperless inbox, or says many documents have wrong dates, correspondents, tags or types.
+name: paperless-ngx-clean-up-inbox
+description: Review the Paperless-ngx inbox (or any selection of documents) one document at a time and fix what automatic import got wrong: useless titles (email subjects, scanner file names), wrong or import-day dates, wrong correspondents, document types and tags. Marks every reviewed document, removes duplicates on request, and ends with a report of follow-ups (open payment reminders, possible business receipts, documents that need a human). Use when the user asks to clean up, sort, review, tidy or process their Paperless-ngx inbox, or says many documents have wrong dates, correspondents, tags or types.
 ---
 
 # Clean Up the Inbox
 
-Imports (mail rules, scanners, consume folder) often leave documents with the email subject or `BRWxxxx_000905` as title, the import day as date, and correspondents, types and tags guessed by Paperless's automatic matching from too little training data. This skill fixes them carefully, because every correction also trains the matching.
+Imports (mail rules, scanners, consume folder) often leave documents with the email subject or `BRWxxxx_000905` as title, the import day as date, and correspondents, types and tags guessed by Paperless-ngx's automatic matching from too little training data. This skill fixes them carefully, because every correction also trains the matching.
 
-If more than one Paperless instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances). Read the shared rules there too.
+If more than one Paperless-ngx instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances). Read the shared rules there too.
 
 ## 1. Survey
 
 1. Count the selection: `documents_list is_in_inbox=true page_size=1` → `count` (or the user's own filter).
 2. List it without content: `fields=["id","title","created","correspondent","document_type","tags"]`, `page_size=100`, `ordering=-added`, all pages. Patterns to look for: many documents dated the import day, scanner titles, a mail-import tag on most of them, the same subject several times.
 3. Load the taxonomy once: `tags_list`, `correspondents_list`, `document_types_list` (all pages, `page_size` large). Note tag parents and which auto-assigned values look wrong (the same correspondent or type on unrelated documents is the typical sign).
-4. Check duplicates early: `documents_list has_duplicates=true` (byte-identical copies). Repeated mail-rule runs often import the same attachments several times. If there are many, run `paperless-find-duplicates` first so you don't clean up copies.
+4. Check duplicates early: `documents_list has_duplicates=true` (byte-identical copies). Repeated mail-rule runs often import the same attachments several times. If there are many, run `paperless-ngx-find-duplicates` first so you don't clean up copies.
 
 ## 2. Agree on conventions (one question round)
 
@@ -35,12 +35,12 @@ Don't ask whether to turn off automatic matching. It learns from the corrected d
 
    Custom fields that link documents (mail-rule setups often link all attachments of one email) give context for a document that is unclear on its own.
 
-2. Decide per document, following `paperless-edit-document-metadata` for title, date, correspondent, type and tags. Then:
+2. Decide per document, following `paperless-ngx-edit-document-metadata` for title, date, correspondent, type and tags. Then:
    - **No date on the document, or the date is the import day:** if a mail connector (for example Gmail `search_threads`) is available, search for the email by distinctive subject words, order or invoice numbers, `has:attachment`, metadata-only view, and use the email's date. One search with `OR` can cover several documents.
-   - **Empty content:** the PDF is likely password protected. Tag it (for example `passwortgeschützt` / `password-protected`), fill in what the title and filename tell you, and offer `paperless-unlock-pdfs` at the end. The email that delivered it often says where the password comes from.
+   - **Empty content:** the PDF is likely password protected. Tag it (for example `passwortgeschützt` / `password-protected`), fill in what the title and filename tell you, and offer `paperless-ngx-unlock-pdfs` at the end. The email that delivered it often says where the password comes from.
    - **Blank or unreadable scan:** title it as such and list it for the user; don't guess.
 
-3. Write: `documents_partial_update` for title and date (plus correspondent, type and the full tag list with the review tag), `bulk_edit` for clearing fields and for changes shared by many documents. Remember the traps in `paperless-edit-document-metadata`, above all that `null` doesn't clear a field in `documents_partial_update`.
+3. Write: `documents_partial_update` for title and date (plus correspondent, type and the full tag list with the review tag), `bulk_edit` for clearing fields and for changes shared by many documents. Remember the traps in `paperless-ngx-edit-document-metadata`, above all that `null` doesn't clear a field in `documents_partial_update`.
 
 4. Create correspondents and types only for real senders and kinds of documents, after checking for spelling variants, with `matching_algorithm: 6`.
 
@@ -66,7 +66,7 @@ Only where you can start subagents (for example in Claude Code); otherwise skip 
 When the agents report back:
 
 - Check that no selected document is still missing the review tag (`tags__id__none=<review tag>` with the same filter).
-- Check `correspondents_list ordering=name` for doubles created in parallel, and merge them with `paperless-tidy-metadata`.
+- Check `correspondents_list ordering=name` for doubles created in parallel, and merge them with `paperless-ngx-tidy-metadata`.
 
 ## 6. Final report
 
@@ -75,6 +75,6 @@ Keep it short:
 - Totals: trashed, reviewed, created correspondents, types and tags.
 - Open reminders and payments in a table (what, amount, latest reminder).
 - Possible business documents, for the user to decide.
-- Duplicates and blank scans still present, with the offer to trash them (after confirmation, see `paperless-find-duplicates`).
+- Duplicates and blank scans still present, with the offer to trash them (after confirmation, see `paperless-ngx-find-duplicates`).
 - Password-protected documents, with the offer to unlock them.
 - Whether the import itself should change (a mail rule that runs twice, a filter that imports newsletters).
