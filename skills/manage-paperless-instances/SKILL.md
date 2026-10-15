@@ -17,7 +17,7 @@ Figure out from the request whether the user wants to **add** a new instance, **
 
 1. **Check whether Paperless is already reachable before asking anything.** Any of these means it is:
    - `mcp__paperless__*` tools are listed as available in this session.
-   - A claude.ai connector already provides the paperless-mcp tools (for example `mcp__claude_ai_Paperless-NGX__documents_list`). The SessionStart hook can't see connectors, so it may nudge anyway.
+   - A claude.ai connector already provides the paperless-mcp tools (for example `mcp__claude_ai_Paperless-NGX__documents_list`). The SessionStart hook can't see connectors, so its one-time setup offer may come anyway.
    - `claude mcp get paperless` exits 0 (its output shows scope and connection status, never the token).
 
    If so, **stop**: report what's already configured and finish. Only continue if the user explicitly wants an *additional* instance, or none of these is true.

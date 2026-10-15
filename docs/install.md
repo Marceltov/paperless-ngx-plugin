@@ -15,7 +15,7 @@ In Claude Code:
 
 ## 3. Connect your Paperless
 
-Start a new Claude Code session. If no Paperless is configured, the plugin's `SessionStart` hook flags it and Claude offers to run the `manage-paperless-instances` skill. You can also ask for it yourself at any time, for example "set up the Paperless plugin".
+Start a new Claude Code session. If no Paperless is configured, the plugin's `SessionStart` hook flags it and Claude offers to run the `manage-paperless-instances` skill. It offers this once per installation, in the first session after you install the plugin; after that, ask for it yourself whenever you like, for example "set up the Paperless plugin".
 
 The skill asks for the paperless-mcp URL and how you sign in, and registers the instance under the name `paperless`, scoped to your user so every project sees it. Configure instances only through this skill, so the names match what the other skills look for.
 
@@ -23,6 +23,6 @@ Restart Claude Code afterwards: a newly registered server only connects on the n
 
 !!! note "Already connected through claude.ai?"
 
-    If your Paperless is added as a connector on claude.ai, its tools are already available and the skills use them. The hook can't see connectors, so it may still offer a setup; the skill notices the existing connection and stops.
+    If your Paperless is added as a connector on claude.ai, its tools are already available and the skills use them. The hook can't see connectors, so it may still offer a setup once; the skill notices the existing connection and stops, and you aren't asked again.
 
 If you use several Claude Code installations (separate `CLAUDE_CONFIG_DIR`s), each is configured on its own.
