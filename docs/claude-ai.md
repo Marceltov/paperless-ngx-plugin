@@ -14,7 +14,7 @@ Every [release](https://github.com/Marceltov/paperless-plugin/releases/latest) h
 
 ## 3. Upload them
 
-In claude.ai, open the skill settings (*Settings → Capabilities*, section *Skills*), upload each zip, and make sure the skill is switched on. Upload the ones you want; they don't depend on each other.
+In claude.ai, open *Customize → Skills*, click **+**, choose *Create skill → Upload a skill*, and upload a zip. Repeat for each skill you want, and make sure each is switched on. Upload the ones you want; they don't depend on each other.
 
 On Team and Enterprise plans an admin can provide the skills to the whole organization instead, so members don't upload them themselves.
 
