@@ -8,7 +8,7 @@ skills/
     SKILL.md
 ```
 
-- **`manage-paperless-instances`**: configures the connection to one or more Paperless instances by asking the user and registering each with `claude mcp add`. Triggered automatically by the `SessionStart` hook in `hooks/` when no instance is configured.
+- **`manage-paperless-instances`**: configures the connection to one or more Paperless instances by asking the user and registering each with `claude mcp add`. Offered once per installation by the `SessionStart` hook in `hooks/`, in the first session without a configured instance.
 - **`search-documents`**: finds documents by text, metadata or ID while keeping results small (the archive's OCR text is huge).
 - **`edit-document-metadata`**: changes title, date, correspondent, type, tags and custom fields on one or many documents, with the API's traps spelled out.
 - **`clean-up-inbox`**: reviews the inbox (or any selection) document by document: real title, real date, correct correspondent, type and tags, plus a follow-up report. Can fan out to parallel subagents for large inboxes.

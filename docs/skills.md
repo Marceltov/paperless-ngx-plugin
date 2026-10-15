@@ -4,7 +4,7 @@ Claude picks a skill automatically when your request matches it, so you just ask
 
 ## Connection
 
-- **`manage-paperless-instances`**: Configures the connection to one or more Paperless instances: add, list or remove them, each registered with `claude mcp add`, with an API token or an OAuth login. Offered automatically by the `SessionStart` hook when no instance is configured.
+- **`manage-paperless-instances`**: Configures the connection to one or more Paperless instances: add, list or remove them, each registered with `claude mcp add`, with an API token or an OAuth login. Offered once by the `SessionStart` hook, in the first session without a configured instance.
 
 ## Everyday
 
