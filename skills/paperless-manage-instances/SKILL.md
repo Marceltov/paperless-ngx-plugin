@@ -1,11 +1,11 @@
 ---
-name: manage-paperless-instances
+name: paperless-manage-instances
 description: Configure connections to one or more paperless-mcp deployments: add a new instance (URL plus API token or OAuth login, optionally labeled), list which are configured and connected, or remove one. Every instance is registered as a user-scoped MCP server via `claude mcp add` (no settings.json editing, no bundled .mcp.json). Use when the paperless MCP server is unconfigured, disconnected or missing credentials (including when a SessionStart hook flags this), when the user asks to set up, configure or connect the Paperless plugin, or when they want to add, remove or list additional Paperless instances.
 ---
 
 # Manage Paperless Instances
 
-Every Paperless instance, including the first/default one, is its own MCP server registered with the `claude mcp add` CLI command, scoped `user` so it's available to every project under the current Claude Code installation. The default instance is named `paperless`; each additional one is `paperless-<label>` (e.g. `paperless-work`). Instances registered as `paperless_<label>` still count. Claude Code exposes each server's tools under its own prefix (`mcp__paperless__*`, `mcp__paperless-work__*`, …); skills resolve which prefix to use per task, see [Working with multiple instances](../README.md#working-with-multiple-instances).
+Every Paperless instance, including the first/default one, is its own MCP server registered with the `claude mcp add` CLI command, scoped `user` so it's available to every project under the current Claude Code installation. The default instance is named `paperless`; each additional one is `paperless-<label>` (e.g. `paperless-work`). Instances registered as `paperless_<label>` still count. Claude Code exposes each server's tools under its own prefix (`mcp__paperless__*`, `mcp__paperless-work__*`, …); skills resolve which prefix to use per task, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances).
 
 **This skill is the only way instances get configured.** Go through `claude mcp add`/`list`/`get`/`remove` only. Never write an `mcpServers` block into settings.json (it rejects the key) and never create a `.mcp.json`.
 

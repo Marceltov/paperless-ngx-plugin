@@ -1,5 +1,5 @@
 ---
-name: unlock-pdfs
+name: paperless-unlock-pdfs
 description: Remove the password from encrypted PDFs in Paperless-ngx with documents_remove_password so Paperless can extract their text, then fix their metadata. Use when documents have empty content because they are password protected (bank statements, health insurance and government mail often are), or when the user asks to unlock, decrypt or remove passwords from documents.
 ---
 
@@ -7,7 +7,7 @@ description: Remove the password from encrypted PDFs in Paperless-ngx with docum
 
 Encrypted PDFs are stored but not OCRed: their `content` is empty, `page_count` is null, and nothing about them is searchable.
 
-If more than one Paperless instance is connected, resolve which one first, see [Working with multiple instances](../README.md#working-with-multiple-instances).
+If more than one Paperless instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances).
 
 ## 1. Find them
 
@@ -39,4 +39,4 @@ A 400 for a single document means the password is wrong (or the PDF isn't encryp
 
 ## 5. Finish
 
-For each unlocked document: remove the password-protected tag (`bulk_edit remove_tag`), and now that the text is readable, give it a proper title, date and correspondent (see `edit-document-metadata`). Report which documents stay locked and why.
+For each unlocked document: remove the password-protected tag (`bulk_edit remove_tag`), and now that the text is readable, give it a proper title, date and correspondent (see `paperless-edit-document-metadata`). Report which documents stay locked and why.

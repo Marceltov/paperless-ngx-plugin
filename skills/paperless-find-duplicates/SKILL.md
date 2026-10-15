@@ -1,11 +1,11 @@
 ---
-name: find-duplicates
+name: paperless-find-duplicates
 description: Find duplicate documents in Paperless-ngx (byte-identical copies flagged by has_duplicates, and same-content copies such as a scan and a PDF of the same invoice), pick which copy to keep, and move the others to the trash after the user confirms. Use when the user asks to find or remove duplicates, when an import ran twice, or when clean-up-inbox finds many copies.
 ---
 
 # Find Duplicates
 
-If more than one Paperless instance is connected, resolve which one first, see [Working with multiple instances](../README.md#working-with-multiple-instances).
+If more than one Paperless instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances).
 
 ## 1. Byte-identical copies
 
@@ -15,7 +15,7 @@ If more than one Paperless instance is connected, resolve which one first, see [
 
 ## 2. Same content, different file
 
-Not flagged by Paperless, but common: a paper scan and the emailed PDF of the same invoice, JPG and PNG of the same picture, two scans of one letter, an appointment list mailed twice. Find them by identical invoice or order numbers (`content__icontains`), identical titles, or while reading documents in `clean-up-inbox`. Different documents that merely belong together (invoice, reminder and dunning letter; quote and order) are **not** duplicates.
+Not flagged by Paperless, but common: a paper scan and the emailed PDF of the same invoice, JPG and PNG of the same picture, two scans of one letter, an appointment list mailed twice. Find them by identical invoice or order numbers (`content__icontains`), identical titles, or while reading documents in `paperless-clean-up-inbox`. Different documents that merely belong together (invoice, reminder and dunning letter; quote and order) are **not** duplicates.
 
 ## 3. Pick the keeper per group
 

@@ -10,7 +10,7 @@ You can connect more than one Paperless, for example a home and a work archive. 
 
 ## Add, list or remove one
 
-Ask Claude, for example "add my work Paperless" or "which Paperless instances are connected?". The `manage-paperless-instances` skill handles it:
+Ask Claude, for example "add my work Paperless" or "which Paperless instances are connected?". The `paperless-manage-instances` skill handles it:
 
 - **Add:** asks for a label (like `work` or `home`), the URL and how you sign in, then registers `paperless-<label>`. Restart Claude Code so it connects.
 - **List:** shows every configured instance and whether it's connected.

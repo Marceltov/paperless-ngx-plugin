@@ -15,7 +15,7 @@ In Claude Code:
 
 ## 3. Connect your Paperless
 
-Start a new Claude Code session. If no Paperless is configured, the plugin's `SessionStart` hook flags it and Claude offers to run the `manage-paperless-instances` skill. It offers this once per installation, in the first session after you install the plugin; after that, ask for it yourself whenever you like, for example "set up the Paperless plugin".
+Start a new Claude Code session. If no Paperless is configured, the plugin's `SessionStart` hook flags it and Claude offers to run the `paperless-manage-instances` skill. It offers this once per installation, in the first session after you install the plugin; after that, ask for it yourself whenever you like, for example "set up the Paperless plugin".
 
 The skill asks for the paperless-mcp URL and how you sign in, and registers the instance under the name `paperless`, scoped to your user so every project sees it. Configure instances only through this skill, so the names match what the other skills look for.
 

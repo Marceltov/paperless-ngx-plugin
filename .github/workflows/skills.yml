@@ -1,0 +1,21 @@
+name: Skills
+
+# Check every skill against claude.ai's rules and build one zip per skill
+# (shared reusable workflow in Marceltov/claude-marketplace). On a published
+# release the zips are attached to it for upload to claude.ai.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  skills:
+    uses: Marceltov/claude-marketplace/.github/workflows/claude-ai-skills.yml@main
+    permissions:
+      contents: write
+    with:
+      release-tag: ${{ github.event_name == 'release' && github.event.release.tag_name || '' }}
