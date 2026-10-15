@@ -16,10 +16,6 @@ In a chat, type `/` to see the skills, for example `/paperless-ngx-clean-up-inbo
 
 The plugin's setup hook only runs in Claude Code and Cowork; in chat it is shown greyed out and does nothing. `paperless-ngx-manage-instances` notices the connector and explains how to add one if it's missing.
 
-## Without plugins: upload single skills
-
-If plugins aren't available to you (for example because an organization restricts them), every [release](https://github.com/Marceltov/paperless-ngx-plugin/releases/latest) also has one zip per skill, for example `paperless-ngx-clean-up-inbox.zip`. Upload them under *Customize → Skills*: click **+**, choose *Create skill → Upload a skill*, and pick a zip. Each zip holds exactly one skill (claude.ai rejects zips with several), so repeat this for each skill you want. Uploaded skills don't update themselves; upload the changed zips again after a new release.
-
 ## What's different from Claude Code
 
 - **No subagents in chat.** `paperless-ngx-clean-up-inbox` works through large inboxes in batches itself instead of splitting them across parallel agents.
