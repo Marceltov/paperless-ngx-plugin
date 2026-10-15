@@ -10,7 +10,7 @@ skills/
     .claude-code-only           optional marker: not built for claude.ai
 ```
 
-- **`paperless-manage-instances`** (Claude Code only): configures the connection to one or more Paperless instances by asking the user and registering each with `claude mcp add`. Offered once per installation by the `SessionStart` hook in `hooks/`, in the first session without a configured instance.
+- **`paperless-manage-instances`**: in Claude Code, configures the connection to one or more Paperless instances by asking the user and registering each with `claude mcp add`; on claude.ai it checks for the connector and explains how to add one. Offered once per installation by the `SessionStart` hook in `hooks/`, in the first session without a configured instance.
 - **`paperless-search-documents`**: finds documents by text, metadata or ID while keeping results small (the archive's OCR text is huge).
 - **`paperless-edit-document-metadata`**: changes title, date, correspondent, type, tags and custom fields on one or many documents, with the API's traps spelled out.
 - **`paperless-clean-up-inbox`**: reviews the inbox (or any selection) document by document: real title, real date, correct correspondent, type and tags, plus a follow-up report. Can fan out to parallel subagents where the client supports them.

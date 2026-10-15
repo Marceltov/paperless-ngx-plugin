@@ -9,6 +9,16 @@ Every Paperless instance, including the first/default one, is its own MCP server
 
 **This skill is the only way instances get configured.** Go through `claude mcp add`/`list`/`get`/`remove` only. Never write an `mcpServers` block into settings.json (it rejects the key) and never create a `.mcp.json`.
 
+## On claude.ai, the desktop app or Cowork
+
+There is no `claude` CLI there; a Paperless is connected as a **custom connector** instead. If Paperless tools are already available, say so and stop. Otherwise explain the steps, with the paperless-mcp server's public HTTPS URL ending in `/mcp`:
+
+1. The server needs OAuth enabled (`MCP_BASE_URL` and `MCP_OAUTH_SECRET` set); claude.ai can't send a token header.
+2. *Customize → Connectors → Add custom connector*: a name (for example `Paperless`) and the URL, keep the detected OAuth choices, then sign in with the Paperless username and password.
+3. Switch the connector on in the chat (**+ → Connectors**).
+
+Details: https://paperless-mcp.marceltov.de/claude-ai/. Everything below applies to Claude Code only.
+
 ## Determine the operation
 
 Figure out from the request whether the user wants to **add** a new instance, **list** what's configured, or **remove** one. Default to **add** when the trigger is a missing-credentials nudge and the user hasn't said otherwise.
