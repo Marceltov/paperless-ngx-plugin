@@ -1,6 +1,6 @@
 # Paperless cleanup brief (template)
 
-Fill in everything in `<angle brackets>`, save the result to the scratchpad and pass its path to each subagent together with its list of document IDs.
+Fill in everything in `<angle brackets>`, save the result to a temporary file (in Claude Code: the session's scratchpad directory) and pass its path to each subagent together with its list of document IDs.
 
 ---
 

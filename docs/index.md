@@ -28,4 +28,5 @@ hide:
 - **Cleans up after imports.** Mail rules and scanners leave email subjects as titles, the import day as date, and guessed correspondents and tags. The inbox skill reads each document, fixes all of it, marks what it reviewed, and reports what needs your attention. Large inboxes can be split across parallel subagents.
 - **Knows the API's traps.** Clearing a field, replacing tag lists, parent tags, OCR text flooding the context: the skills handle them so Claude doesn't learn them the hard way.
 - **Asks before destructive changes.** Trashing duplicates, deleting correspondents or tags and rewriting files are confirmed with you first.
+- **Works on claude.ai too.** Add this repository as a plugin marketplace on claude.ai, next to a paperless-mcp connector. See [Use on claude.ai](claude-ai.md).
 - **Handles several instances.** Connect a home and a work Paperless side by side. See [Multiple instances](multiple-instances.md).

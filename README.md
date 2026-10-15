@@ -38,6 +38,8 @@ On Claude Code before 2.1.275, add the marketplace first:
 
 Then start a new session: Claude offers to connect your Paperless if none is configured.
 
+**On claude.ai?** Connect paperless-mcp as a connector, then add this repository under *Customize → Plugins → Add → Add marketplace* and add `paperless`. See [Use on claude.ai](https://paperless-plugin.marceltov.de/claude-ai/).
+
 ## What the skills do
 
 - **Clean up the inbox**: real titles instead of email subjects and scanner names, the document's own date instead of the import day, correct correspondents, types and tags, and a report of what needs your attention (open payment reminders, documents nobody could classify). Every correction also trains Paperless's automatic matching.

@@ -1,11 +1,11 @@
 ---
-name: tidy-metadata
+name: paperless-tidy-metadata
 description: Clean up Paperless-ngx correspondents, document types and tags: merge doubles (spelling variants, the same sender created twice), remove unused entries, fix tag hierarchies, and adjust matching rules. Use when the user asks to merge or deduplicate correspondents, types or tags, remove unused ones, or after a bulk cleanup created entries in parallel.
 ---
 
 # Tidy Correspondents, Types and Tags
 
-If more than one Paperless instance is connected, resolve which one first, see [Working with multiple instances](../README.md#working-with-multiple-instances).
+If more than one Paperless instance is connected, resolve which one first, see [Working with multiple instances](reference/shared-rules.md#working-with-multiple-instances).
 
 ## 1. Survey
 
