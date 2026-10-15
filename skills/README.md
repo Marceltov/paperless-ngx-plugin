@@ -10,13 +10,13 @@ skills/
     .claude-code-only           optional marker: not built for claude.ai
 ```
 
-- **`paperless-manage-instances`**: in Claude Code, configures the connection to one or more Paperless instances by asking the user and registering each with `claude mcp add`; on claude.ai it checks for the connector and explains how to add one. Offered once per installation by the `SessionStart` hook in `hooks/`, in the first session without a configured instance.
-- **`paperless-search-documents`**: finds documents by text, metadata or ID while keeping results small (the archive's OCR text is huge).
-- **`paperless-edit-document-metadata`**: changes title, date, correspondent, type, tags and custom fields on one or many documents, with the API's traps spelled out.
-- **`paperless-clean-up-inbox`**: reviews the inbox (or any selection) document by document: real title, real date, correct correspondent, type and tags, plus a follow-up report. Can fan out to parallel subagents where the client supports them.
-- **`paperless-find-duplicates`**: finds byte-identical and same-content copies, picks which one to keep, and trashes the rest after confirmation.
-- **`paperless-unlock-pdfs`**: removes the password from encrypted PDFs so Paperless can read their text.
-- **`paperless-tidy-metadata`**: merges duplicate correspondents, document types and tags, and cleans up unused ones.
+- **`paperless-ngx-manage-instances`**: in Claude Code, configures the connection to one or more Paperless-ngx instances by asking the user and registering each with `claude mcp add`; on claude.ai it checks for the connector and explains how to add one. Offered once per installation by the `SessionStart` hook in `hooks/`, in the first session without a configured instance.
+- **`paperless-ngx-search-documents`**: finds documents by text, metadata or ID while keeping results small (the archive's OCR text is huge).
+- **`paperless-ngx-edit-document-metadata`**: changes title, date, correspondent, type, tags and custom fields on one or many documents, with the API's traps spelled out.
+- **`paperless-ngx-clean-up-inbox`**: reviews the inbox (or any selection) document by document: real title, real date, correct correspondent, type and tags, plus a follow-up report. Can fan out to parallel subagents where the client supports them.
+- **`paperless-ngx-find-duplicates`**: finds byte-identical and same-content copies, picks which one to keep, and trashes the rest after confirmation.
+- **`paperless-ngx-unlock-pdfs`**: removes the password from encrypted PDFs so Paperless-ngx can read their text.
+- **`paperless-ngx-tidy-metadata`**: merges duplicate correspondents, document types and tags, and cleans up unused ones.
 
 ## Writing skills here
 

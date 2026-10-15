@@ -1,15 +1,15 @@
 {
-  "name": "paperless",
-  "version": "0.2.0",
-  "description": "Claude Code plugin for Paperless-ngx: skills plus the MCP connection to a running paperless-mcp server.",
+  "name": "paperless-ngx",
+  "version": "0.3.0",
+  "description": "Claude Code plugin for Paperless-ngx: skills plus the MCP connection to a running Paperless-ngx MCP server.",
   "author": {
     "name": "Marcel Bruckner"
   },
-  "homepage": "https://paperless-plugin.marceltov.de/",
-  "repository": "https://github.com/Marceltov/paperless-plugin",
+  "homepage": "https://paperless-ngx-plugin.marceltov.de/",
+  "repository": "https://github.com/Marceltov/paperless-ngx-plugin",
   "license": "MIT",
   "keywords": [
-    "paperless",
+    "paperless-ngx",
     "paperless-ngx",
     "documents",
     "mcp",

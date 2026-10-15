@@ -1,5 +1,5 @@
 #!/bin/bash
-# SessionStart hook: flags when no Paperless instance is configured at all, so
+# SessionStart hook: flags when no Paperless-ngx instance is configured at all, so
 # Claude can offer to run manage-paperless-instances instead of the user
 # hitting a silent/failed MCP connection.
 set -euo pipefail
@@ -17,7 +17,7 @@ import json, re, sys
 try:
     with open(sys.argv[1]) as f:
         servers = json.load(f)["mcpServers"]
-    ok = any(re.match(r"^paperless([-_].+)?$", k) for k in servers)
+    ok = any(re.match(r"^paperless-ngx([-_].+)?$", k) for k in servers)
 except Exception:
     ok = False
 sys.exit(0 if ok else 1)
@@ -32,14 +32,14 @@ fi
 # offer the user knows the skill exists; people who connect another way (a
 # claude.ai connector, which this check can't see) or decline aren't asked
 # again. The skill stays available whenever the user asks for it.
-state_dir="${CLAUDE_PLUGIN_DATA:-${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugin-data/paperless-plugin}"
+state_dir="${CLAUDE_PLUGIN_DATA:-${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugin-data/paperless-ngx-plugin}"
 marker="$state_dir/setup-offered"
 if [ -e "$marker" ]; then
   exit 0
 fi
 mkdir -p "$state_dir" 2>/dev/null && touch "$marker" 2>/dev/null || true
 
-context="No Paperless instance is configured: no paperless/paperless-<label> entry exists in ${claude_json_path}'s mcpServers, so there's no MCP connection to authenticate. Proactively offer to run the paperless:paperless-manage-instances skill with the user now (collects the paperless-mcp URL and an API token or OAuth login for a new instance and registers it via 'claude mcp add' for this installation), unless they are already mid-task on something unrelated. This offer is made only once per installation; if the user declines or already reaches it another way (for example a claude.ai connector), drop it."
+context="No Paperless-ngx instance is configured: no paperless-ngx/paperless-ngx-<label> entry exists in ${claude_json_path}'s mcpServers, so there's no MCP connection to authenticate. Proactively offer to run the paperless-ngx:paperless-ngx-manage-instances skill with the user now (collects the Paperless-ngx MCP server URL and an API token or OAuth login for a new instance and registers it via 'claude mcp add' for this installation), unless they are already mid-task on something unrelated. This offer is made only once per installation; if the user declines or already reaches it another way (for example a claude.ai connector), drop it."
 
 printf '%s' "$input" | python3 -c '
 import json, sys
